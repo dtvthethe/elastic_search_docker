@@ -1,0 +1,41 @@
+.list-group-item {
+    height: 32px;
+    font-size: 13px;
+    padding: 6px 7px;
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #9b9b9b4d;
+    border-left: 4px solid #bf3e3e;
+    padding: 6px 4px;
+}
+
+.panel {
+    margin-top: 20px;
+}
+
+.side {
+    height: 500px;
+    padding-top: 10px;
+}
+
+.panel .frm .txt-keyword {
+    border: 1px solid #898484;
+    margin-bottom: 1px;
+}
+
+.panel .frm .txt-keyword:focus {
+    box-shadow: none;
+}
+
+.loading {
+    text-align: center;
+}
+
+.list {
+    max-height: 288px;
+    overflow-y: auto;
+    border: 1px solid gray;
+    border-radius: 3px;
+}

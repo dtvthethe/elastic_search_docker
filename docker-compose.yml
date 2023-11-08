@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  my-nodejs-app:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    image: my-nodejs-app-image:1.1.5
+    container_name: my-admin-app
+    ports:
+      - 2812:80
+    volumes:
+      - ./admin:/app
+    networks:
+      - the-network
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+    networks:
+      - the-network
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.16.2
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    networks:
+      - the-network
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Aa@123456
+      - MYSQL_DATABASE=my_northwind
+    ports:
+      - 4406:3306
+    networks:
+      - the-network
+
+volumes:
+  admin:
+    driver: local
+
+networks:
+  the-network:
+    driver: bridge
