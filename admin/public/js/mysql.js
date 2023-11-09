@@ -3,8 +3,7 @@ getEmployees = (path, data) => {
         url: 'http://localhost:2812/api/mysql/employees/',
         type: 'GET',
         data: {...data},
-        // async: true,
-        async: false,
+        async: true,
         beforeSend: () => {
             $('.loading').show();
             $('.list').hide();
